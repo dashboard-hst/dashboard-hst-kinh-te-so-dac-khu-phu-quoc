@@ -154,9 +154,9 @@ export default function App() {
   const [periodicData, setPeriodicData] = useState<Record<string, any>>({});
   const [communeData, setCommuneData] = useState<Record<string, any>>({});
 
-  // Dữ liệu xã Tân Hiệp từ Firestore (thay thế COMMUNE_DATA['X. Tân Hiệp'])
+  // Dữ liệu Đặc Khu Phú Quốc từ Firestore (thay thế COMMUNE_DATA['X. Phú Quốc'])
   const currentZoneData = useMemo(() => {
-    return communeData['X. Tân Hiệp'] || EMPTY_COMMUNE_ENTRY;
+    return communeData['X. Phú Quốc'] || EMPTY_COMMUNE_ENTRY;
   }, [communeData]);
 
   // Khởi tạo Firestore: seed nếu trống + lắng nghe realtime
@@ -436,7 +436,7 @@ export default function App() {
   const [aiChatHistory, setAiChatHistory] = useState([
     {
       role: 'assistant',
-      text: 'Xin chào Ban chỉ đạo Xã Tân Hiệp! Tôi là Trợ lý AI Điều Hành DECC. Tôi đã đối soát hoàn chỉnh cả 2 Tầng dữ liệu: Tầng 1 (Chuẩn Phường/Xã 2.0 - DEI 76%) và Tầng 2 (Hệ sinh thái Kinh tế số). Sẵn sàng đồng hành cùng lãnh đạo để phân tích mâu thuẫn hệ thống và ra quyết định chính xác nhất.',
+      text: 'Xin chào Ban chỉ đạo Đặc Khu Phú Quốc! Tôi là Trợ lý AI Điều Hành DECC. Tôi đã đối soát hoàn chỉnh cả 2 Tầng dữ liệu: Tầng 1 (Chuẩn Phường/Đặc Khu 2.0 - DEI 76%) và Tầng 2 (Hệ sinh thái Kinh tế số). Sẵn sàng đồng hành cùng lãnh đạo để phân tích mâu thuẫn hệ thống và ra quyết định chính xác nhất.',
       timestamp: '07:41',
     },
   ]);
@@ -566,7 +566,7 @@ export default function App() {
         {
           parts: [
             {
-              text: 'Soạn một quyết định hành chính ngắn gọn để khắc phục điểm nghẽn đào tạo chuyển đổi số tại Xã Tân Hiệp.',
+              text: 'Soạn một quyết định hành chính ngắn gọn để khắc phục điểm nghẽn đào tạo chuyển đổi số tại Đặc Khu Phú Quốc.',
             },
           ],
         },
@@ -584,7 +584,7 @@ export default function App() {
       );
     } catch (err) {
       setGeneratedIssuePolicy(
-        `**ỦY BAN NHÂN DÂN XÃ TÂN HIỆP**\n**QUYẾT ĐỊNH:**\nĐiều 1. Khẩn trương mở 5 khóa đào tạo công nghệ trong tháng này để giải quyết tình trạng thiếu hụt năng lực.`
+        `**ỦY BAN NHÂN DÂN Đặc Khu Phú Quốc**\n**QUYẾT ĐỊNH:**\nĐiều 1. Khẩn trương mở 5 khóa đào tạo công nghệ trong tháng này để giải quyết tình trạng thiếu hụt năng lực.`
       );
     } finally {
       setIsGeneratingPolicy(false);
@@ -774,7 +774,7 @@ export default function App() {
             <div className="flex items-center gap-2">
               <span className="text-[10px] bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>{' '}
-                XÃ TÂN HIỆP - DECC COCKPIT
+                Đặc Khu Phú Quốc - DECC COCKPIT
               </span>
             </div>
             <h1 className="text-xl md:text-2xl font-black tracking-tight bg-gradient-to-r from-white via-cyan-100 to-[#00C2FF] bg-clip-text text-transparent">
@@ -831,16 +831,16 @@ export default function App() {
               Địa bàn:
             </span>
             <span className="text-xs font-semibold text-cyan-400">
-              Xã Tân Hiệp
+              Đặc Khu Phú Quốc
             </span>
           </div>
 
           {[
             {
               id: 'layer-1',
-              label: 'Tầng 1: Bộ tiêu chí kinh tế số UBND cấp xã',
+              label: 'Tầng 1: Bộ tiêu chí kinh tế số UBND cấp Đặc Khu',
               icon: ShieldCheck,
-              subtitle: `DEI ${activeMetrics.layer1.deiScore}% (Kinh tế & Xã hội)`,
+              subtitle: `DEI ${activeMetrics.layer1.deiScore}% (Kinh tế & Đặc Khu hội)`,
             },
             {
               id: 'layer-2',
@@ -951,7 +951,7 @@ export default function App() {
                 <div>
                   <h2 className="text-xl font-black text-cyan-400 flex items-center gap-2">
                     <ShieldCheck className="h-6 w-6 text-cyan-400" /> TẦNG 1: BỘ
-                    TIÊU CHÍ KINH TẾ SỐ UBND CẤP XÃ
+                    TIÊU CHÍ KINH TẾ SỐ UBND CẤP Đặc Khu
                   </h2>
                   <p className="text-xs text-slate-400">
                     Bản phân rã 8 nhóm chỉ số nhiệm vụ cốt lõi đo lường nền kinh
@@ -966,7 +966,7 @@ export default function App() {
                   <div className="flex items-center gap-2 mb-5">
                     <Building2 className="h-5 w-5 text-cyan-400" />
                     <span className="text-sm font-bold text-cyan-400 uppercase tracking-wide">
-                      B1: THÔNG TIN ĐƠN VỊ KINH DOANH - XÃ TÂN HIỆP
+                      B1: THÔNG TIN ĐƠN VỊ KINH DOANH - Đặc Khu Phú Quốc
                     </span>
                   </div>
 
@@ -1022,7 +1022,7 @@ export default function App() {
                       className="bg-[#122A4E]/20 p-3 rounded-xl border border-cyan-500/10 block cursor-pointer hover:border-cyan-400 hover:bg-[#122A4E]/40 transition-all"
                     >
                       <span className="text-[9px] text-slate-400 block mb-2 font-bold uppercase h-6">
-                        Tổng Số<br />Hợp Tác Xã
+                        Tổng Số<br />Hợp Tác Đặc Khu
                       </span>
                       <strong className="text-xl font-mono text-emerald-400">
                         {currentZoneData.b1.htx_total}
@@ -1071,7 +1071,7 @@ export default function App() {
                     </div>
                     <div className="bg-[#122A4E]/30 p-3 rounded-xl border border-cyan-500/5">
                       <span className="text-[9px] text-slate-400 block mb-1 font-bold uppercase h-6">
-                        Tổng Số Hợp Tác Xã<br />Chuyển Đổi Số
+                        Tổng Số Hợp Tác Đặc Khu<br />Chuyển Đổi Số
                       </span>
                       <strong className="text-lg font-mono text-emerald-400 block mb-1">
                         {currentZoneData.b1.htx_cds}
@@ -2482,7 +2482,7 @@ export default function App() {
                     <strong className="text-2xl font-black font-mono text-cyan-400">{activeMetrics.layer4.policy.total}</strong>
                   </div>
                   <div className="space-y-4">
-                    {['Doanh nghiệp', 'Hộ kinh doanh', 'Hợp tác xã'].map((label, i) => (
+                    {['Doanh nghiệp', 'Hộ kinh doanh', 'Hợp tác Đặc Khu'].map((label, i) => (
                       <div key={i} className="flex items-center gap-4">
                         <span className="text-xs text-slate-300 w-24">{label}</span>
                         <div className="flex-1 h-6 bg-[#07111F] flex items-center">
@@ -2528,7 +2528,7 @@ export default function App() {
                 </h2>
                 <p className="text-xs text-slate-400 mt-1">
                   Thống kê mạng lưới các điểm Thương mại điện tử O2O, Hub Xanh
-                  tại địa phương (từ Đại lý bán hàng đến Hub Phường/Xã).
+                  tại địa phương (từ Đại lý bán hàng đến Hub Phường/Đặc Khu).
                 </p>
               </div>
 
@@ -2563,7 +2563,7 @@ export default function App() {
                       </div>
                       <div>
                         <span className="text-[10px] font-bold text-cyan-400 uppercase">
-                          Hub Xanh (Cấp Xã/Phường)
+                          Hub Xanh (Cấp Đặc Khu/Phường)
                         </span>
                         <div className="text-3xl font-mono font-black text-white">
                           {activeMetrics.layer5.hubs.total}
@@ -2572,10 +2572,10 @@ export default function App() {
                     </div>
                     <div className="flex justify-between text-xs mt-4 pt-3 border-t border-cyan-500/20">
                       <span className="text-slate-300">
-                        Phủ sóng Xã/Phường:
+                        Phủ sóng Đặc Khu/Phường:
                       </span>
                       <strong className="text-cyan-400">
-                        {activeMetrics.layer5.hubs.communes} Xã
+                        {activeMetrics.layer5.hubs.communes} Đặc Khu
                       </strong>
                     </div>
                   </div>
@@ -2632,7 +2632,7 @@ export default function App() {
                       Các "Điểm bán Xanh" đóng vai trò là chi nhánh vệ tinh tiếp
                       nhận và xử lý đơn hàng Online-to-Offline (O2O) trực tiếp
                       tại địa phương. Dữ liệu tập trung về các "Hub Xanh" trung
-                      tâm của Phường/Xã để tối ưu hóa Logistics và giảm thời
+                      tâm của Phường/Đặc Khu để tối ưu hóa Logistics và giảm thời
                       gian giao hàng.
                     </p>
                   </div>
@@ -3289,11 +3289,11 @@ export default function App() {
           <CheckCircle2 className="h-4 w-4 text-emerald-400" />
           <span>
             Hệ thống đồng bộ dữ liệu song song theo chuẩn bảo
-            mật IOC xã Tân Hiệp.
+            mật IOC Đặc Khu Phú Quốc.
           </span>
         </div>
         <div>
-          <span>© 2026 Ban Chỉ Đạo Chuyển Đổi Số Xã Tân Hiệp.</span>
+          <span>© 2026 Ban Chỉ Đạo Chuyển Đổi Số Đặc Khu Phú Quốc.</span>
         </div>
       </footer>
     </div>
