@@ -154,9 +154,9 @@ export default function App() {
   const [periodicData, setPeriodicData] = useState<Record<string, any>>({});
   const [communeData, setCommuneData] = useState<Record<string, any>>({});
 
-  // Dữ liệu Đặc Khu Phú Quốc từ Firestore (thay thế COMMUNE_DATA['X. Phú Quốc'])
+  // Dữ liệu Đặc Khu Phú Quốc từ Firestore (thay thế COMMUNE_DATA['ĐK. Phú Quốc'])
   const currentZoneData = useMemo(() => {
-    return communeData['X. Phú Quốc'] || EMPTY_COMMUNE_ENTRY;
+    return communeData['ĐK. Phú Quốc'] || EMPTY_COMMUNE_ENTRY;
   }, [communeData]);
 
   // Khởi tạo Firestore: seed nếu trống + lắng nghe realtime
